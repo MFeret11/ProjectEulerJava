@@ -145,7 +145,8 @@ public class ProjectEulerProblems {
             }
         }
     }
-    public static boolean isPrime(int n){
+    //helper method for problem 7.
+    private static boolean isPrime(int n){
          //check if n is a multiple of 2
         if (n%2==0) return false;
         //if not, then just check the odds
@@ -155,4 +156,40 @@ public class ProjectEulerProblems {
         }
         return true;
     }
+        
+    //Euler Problem 14
+    public static void collatzGenerator() {
+        int largest = 0;
+        int seedVal = -1;
+
+        int counter;
+
+        for (int seed = 2; seed < 1000000; seed++) {
+
+            counter = collatzTest(seed);
+            
+            if (counter > largest) {
+                largest = counter;
+                seedVal = seed;
+            }
+        }
+        System.out.println("Largest chain is: " + largest + " Occuring at seed: " + seedVal);
+    }
+    //helper method for problem 14
+    private static int collatzTest(double seed) {
+        int sequenceCounter = 1;
+        while (seed > 1) {
+            if (seed % 2 == 0) {
+                seed = seed / 2;
+            } else {
+                seed = (3 * seed) + 1;
+            }
+            sequenceCounter++;
+        }
+        return sequenceCounter++;
+    }
+    
+    
+
+
 }
